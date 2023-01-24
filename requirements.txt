@@ -3,3 +3,4 @@ kanilog
 pytest
 stdlogging
 fire
+delegator.py
