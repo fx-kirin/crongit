@@ -1,0 +1,57 @@
+#! /usr/bin/env python
+# -*- coding: utf-8 -*-
+# vim:fenc=utf-8
+#
+# Copyright © 2023 fx-kirin <fx.kirin@gmail.com>
+#
+# Distributed under terms of the MIT license.
+
+"""
+
+"""
+#! /usr/bin/env python
+# -*- coding: utf-8 -*-
+# vim:fenc=utf-8
+#
+# Copyright © 2022 fx-kirin <fx.kirin@gmail.com>
+#
+# Distributed under terms of the MIT license.
+
+__ALL__ = ["update", "init"]
+
+import logging
+import os
+from pathlib import Path
+
+import delegator
+import fire
+import kanilog
+
+
+import kanilog
+
+logger = kanilog.get_module_logger(__file__, 1)
+
+
+def update(filepath=None):
+    if filepath is None:
+        filepath = "%s.crontab" % os.environ["USER"]
+    result = delegator.run(f"git status {filepath} 2> /dev/null").out
+    if "nothing" not in result.split('\n')[-2]:
+        logger.error("You must commit crontab file before update.")
+        return
+    result = delegator.run(f"crontab {filepath}").out
+    logger.info(result)
+
+
+def init():
+    result = delegator.run("crontab -l 2> /dev/null").out
+    Path("%s.crontab" % os.environ["USER"]).write_text(result)
+    logger.info("Write crontab file from the file that currently set.")
+
+
+if __name__ == "__main__":
+    kanilog.setup_logger(
+        logfile="/tmp/%s.log" % (Path(__file__).name), level=logging.INFO
+    )
+    fire.Fire({"update": update, "init": init})
