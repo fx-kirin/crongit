@@ -44,9 +44,11 @@ def update(filepath=None):
     logger.info(result)
 
 
-def init():
+def init(filepath=None):
+    if filepath is None:
+        filepath = "%s.crontab" % os.environ["USER"]
     result = delegator.run("crontab -l 2> /dev/null").out
-    Path("%s.crontab" % os.environ["USER"]).write_text(result)
+    Path(filepath).write_text(result)
     logger.info("Write crontab file from the file that currently set.")
 
 
