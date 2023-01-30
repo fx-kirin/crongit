@@ -61,6 +61,11 @@ def init(filepath=None):
     logger.info("Write crontab file from the file that currently set.")
 
 
+def status():
+    result = delegator.run("crontab -l").out
+    print(result)
+
+
 if __name__ == "__main__":
     kanilog.setup_logger(
         logfile="/tmp/%s.log" % (Path(__file__).name), level=logging.INFO
