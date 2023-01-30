@@ -68,6 +68,6 @@ def status():
 
 if __name__ == "__main__":
     kanilog.setup_logger(
-        logfile="/tmp/%s.log" % (Path(__file__).name), level=logging.INFO
+        level=logging.INFO
     )
     fire.Fire({"update": update, "init": init, "status": status})
