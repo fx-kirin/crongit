@@ -31,7 +31,7 @@ def get_requires():
 
 setup(
     name="crongit",
-    version="0.1.10",
+    version="0.1.11",
     url="",
     license="MIT",
     author="fx-kirin",
