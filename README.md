@@ -2,6 +2,8 @@
 
 [![Latest PyPI version](https://img.shields.io/pypi/v/package_name.svg)](https://pypi.python.org/pypi/crongit)
 
+Control crontab with git easily.
+
 ## Usage
 
 ```
