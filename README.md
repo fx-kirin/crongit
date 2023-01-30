@@ -4,13 +4,22 @@
 
 ## Usage
 
+```
+# get current crontab setting.
+crongit init
+
+# Modify your crontab setting
+vim $USER.crontab
+
+# Update crontab and if it's been done, commit the crontab file.
+crongit update
+```
+
 ## Installation
 
-### Requirements
-
-## Compatibility
-
-## Licence
+```
+pip install crongit
+```
 
 ## Authors
 
