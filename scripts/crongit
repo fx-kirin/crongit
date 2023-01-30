@@ -34,13 +34,13 @@ logger = kanilog.get_module_logger(__file__, 1)
 
 
 def update(commit_message=None, filepath=None):
-    result = delegator.run(f"crontab {filepath}").out
-    if len(result.strip()) > 0:
+    if filepath is None:
+        filepath = "%s.crontab" % os.environ["USER"]
+    result = delegator.run(f"crontab {filepath}")
+    if len(result.err.strip()) > 0:
         logger.warning(result)
         logger.warning("Cron-update failed.")
         return
-    if filepath is None:
-        filepath = "%s.crontab" % os.environ["USER"]
     result = delegator.run(f"git status {filepath} 2> /dev/null").out
     last_line = result.split('\n')[-2]
     if "nothing" not in last_line or "untracked" in last_line:
