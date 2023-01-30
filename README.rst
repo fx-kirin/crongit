@@ -11,17 +11,24 @@ crongit
 Usage
 -----
 
+.. code-block::
+
+   # get current crontab setting.
+   # it will generate the file `$USER.crontab`
+   crongit init
+
+   # Modify your crontab setting
+   vim $USER.crontab
+
+   # Update crontab and if it's been done without an error, commit the crontab file.
+   crongit update
+
 Installation
 ------------
 
-Requirements
-^^^^^^^^^^^^
+.. code-block::
 
-Compatibility
--------------
-
-Licence
--------
+   pip install crongit
 
 Authors
 -------
