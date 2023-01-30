@@ -2,13 +2,14 @@
 
 [![Latest PyPI version](https://img.shields.io/pypi/v/package_name.svg)](https://pypi.python.org/pypi/crongit)
 
-Control crontab with git easily.
+Manage crontab with git easily.
 
 ## Usage
 
 ```
 # Move to a new directory to manage crontab files with git.
 git init
+
 # get current crontab setting.
 # it will generate the file named `$USER.crontab`
 crongit init
