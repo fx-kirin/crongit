@@ -46,7 +46,7 @@ def update(commit_message=None, filepath=None):
     if "nothing" not in last_line or "untracked" in last_line:
         result = delegator.run(f"git add {filepath} 2> /dev/null").out
         if commit_message is None:
-            result = delegator.run("git commit -m \"auto upadte\" 2> /dev/null").out
+            result = delegator.run("git commit -m \"Automatical upadte by crongit.\" 2> /dev/null").out
         else:
             result = delegator.run(f"git commit -m \"{commit_message}\" {filepath} 2> /dev/null").out
         logger.info("Automatically update crontab and commit your cron file.")
