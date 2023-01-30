@@ -6,13 +6,13 @@
 
 ```
 # get current crontab setting.
-# it will generate the file `$USER.crontab`
+# it will generate the file named `$USER.crontab`
 crongit init
 
 # Modify your crontab setting
 vim $USER.crontab
 
-# Update crontab and if it's been done without an error, commit the crontab file.
+# Update crontab with `$USER.crontab` and if it's been done without an error, commit the crontab file automatically.
 crongit update
 ```
 
